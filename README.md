@@ -1,1 +1,1 @@
-## Contains examples on various javascript features 
+## Contains examples on various javascript features.
