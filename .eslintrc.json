@@ -12,17 +12,18 @@
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "plugins": [
-        "immutable"
+        "immutable",
+        "babel"
     ],
     "rules": {
         "immutable/no-mutation": 2,
         "immutable/no-let": 2,
-    	"immutable/no-this": 2,
         "indent": ["error", 4]
     }
 }

@@ -14,3 +14,13 @@ test('divide by zero', () => {
     expect(() => divide(1, 0))
         .toThrowError(/zero/i);
 });
+
+test('passing string as first argument', () => {
+    expect(() => divide('1', 0))
+        .toThrowError(/number/i);
+});
+
+test('passing string as second argument', () => {
+    expect(() => divide(1, '2'))
+        .toThrowError(/number/i);
+});

@@ -13,3 +13,11 @@ export const argumentIstZero = (index) => (fn) => (...args) => {
 
     return fn(...args);
 };
+
+export const argumentIsNumber = (index) => (fn) => (...args) => {
+    if (typeof args[index] !== 'number') {
+        throw new Error(`Argument at index ${index} should be of type number`);
+    }
+
+    return fn(...args);
+};
