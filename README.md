@@ -1,1 +1,5 @@
-## Contains examples on various javascript features.
+## Concepts
+
+### Arrow vs normal functions
+### HOC
+### Currying
