@@ -11,7 +11,7 @@ export const resolve = () => new Promise((res) => res());
 export const all = (array) => new Promise((resolve, reject) => {
     const results = [];
 
-    const isFinished = () => {
+    const checkEnd = () => {
         if (array.length === length(results)) {
             resolve(results);
         }
@@ -20,13 +20,12 @@ export const all = (array) => new Promise((resolve, reject) => {
     array.forEach((fn, index) => {
         fn.then((result) => {
             results[index] = result;
-            isFinished();
+            checkEnd();
         }).catch((error) => {
             reject(error);
         });
     });
 });
-
 
 export const race = (array) => new Promise((resolve, reject) => array.forEach((fn) => fn
     .then((result) => resolve(result))
@@ -35,7 +34,7 @@ export const race = (array) => new Promise((resolve, reject) => array.forEach((f
 export const allSettled = (array) => new Promise((resolve) => {
     const results = [];
 
-    const isFinished = () => {
+    const checkEnd = () => {
         if (array.length === length(results)) {
             resolve(results);
         }
@@ -44,10 +43,10 @@ export const allSettled = (array) => new Promise((resolve) => {
     array.forEach((fn, index) => {
         fn.then((res) => {
             results[index] = res;
-            isFinished();
+            checkEnd();
         }).catch((error) => {
             results[index] = error;
-            isFinished();
+            checkEnd();
         });
     });
 });
