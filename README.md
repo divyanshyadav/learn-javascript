@@ -4,3 +4,4 @@
 ### HOC
 ### Currying
 ### Generator
+### Promise method implementation
