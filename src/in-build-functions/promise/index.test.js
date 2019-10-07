@@ -1,6 +1,6 @@
 /* eslint-disable immutable/no-let */
 import * as promise from '.';
-import { wait } from '../utils';
+import { wait } from '../../utils';
 
 describe('all', () => {
     it('should give result of all promises after successful resolution in same order', async () => {

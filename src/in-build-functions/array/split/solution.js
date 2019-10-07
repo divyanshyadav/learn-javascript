@@ -2,9 +2,17 @@
 /* eslint-disable immutable/no-let */
 
 const split = (string, delimiter) => {
-    const result = [];
+    if (string.length === 0 && delimiter.length === 0) {
+        return [];
+    }
 
+    if (delimiter.length > string.length) {
+        return [string];
+    }
+
+    const result = [];
     let current = '';
+
     for (let i = 0; i < string.length; i += 1) {
         if (string.charAt(i) === delimiter[0]) {
             let matched = true;
@@ -15,7 +23,6 @@ const split = (string, delimiter) => {
                 }
                 temp += string.charAt(i);
             }
-
             if (matched) {
                 result.push(current);
                 current = '';
@@ -29,7 +36,14 @@ const split = (string, delimiter) => {
             }
         }
     }
+
+    if (current === '') {
+        result.push('');
+    }
+
     return result;
 };
+
+// split('a...', '...');
 
 export default split;

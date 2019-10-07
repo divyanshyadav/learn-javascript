@@ -1,5 +1,5 @@
 import deepFreeze from 'deep-freeze';
-import map from './map';
+import map from '.';
 
 test('squaring each item', () => {
     const input = [1, 2, 3];
