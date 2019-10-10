@@ -143,4 +143,12 @@ describe('test string spiting on the bases of delimiter', () => {
 
         expect(split(input, '.')).toEqual(expectedOutput);
     });
+
+
+    test('case 16', () => {
+        const input = ' a bc  ';
+        const expectedOutput = ['', 'a', 'bc', '', ''];
+
+        expect(split(input, ' ')).toEqual(expectedOutput);
+    });
 });

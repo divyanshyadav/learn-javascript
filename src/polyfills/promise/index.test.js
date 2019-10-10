@@ -5,6 +5,18 @@ import { wait } from '../../utils';
 describe('all', () => {
     it('should give result of all promises after successful resolution in same order', async () => {
         const promises = [
+            1,
+            wait(20),
+            1,
+        ];
+        const expectedOutput = [1, 20, 1];
+        const output = await promise.all(promises);
+
+        expect(output).toEqual(expectedOutput);
+    });
+
+    it('should give result of all promises after successful resolution in same order', async () => {
+        const promises = [
             wait(10),
             wait(20),
             wait(1),
@@ -21,7 +33,7 @@ describe('all', () => {
             wait(10),
             wait(20),
             wait(1),
-            wait(50).then(() => {
+            wait(1).then(() => {
                 throw error;
             }),
         ];
@@ -59,19 +71,15 @@ describe('race', () => {
 
 describe('allSettled', () => {
     it('should give result of all promises', async () => {
-        const error = new Error('a');
         const promises = [
             wait(10),
             wait(20),
             wait(1),
-            wait(2).then(() => {
-                throw error;
-            }),
+            wait(1, false),
         ];
 
-        const expectedOutput = [10, 20, 1, error];
+        const expectedOutput = [10, 20, 1, 1];
         const output = await promise.allSettled(promises);
-
         expect(output).toEqual(expectedOutput);
     });
 });

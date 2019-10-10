@@ -1,6 +1,9 @@
 // eslint-disable-next-line import/prefer-default-export
-export const wait = (ms) => new Promise((res) => {
+export const wait = (ms, fulfill = true) => new Promise((res, rej) => {
     setTimeout(() => {
-        res(ms);
+        if (fulfill) {
+            res(ms);
+        }
+        rej(ms);
     }, ms);
 });
