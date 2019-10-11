@@ -5,26 +5,16 @@ const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
 
-function main() {
-    try {
-        const { filename, runner } = validateAndParseParams({
-            filename: process.argv[2],
-            runner: process.argv[3] || 'node',
-        });
-
-        watchAndRun({
-            filename,
-            cmd: runner,
-        });
-    } catch (err) {
-        console.log(err.message);
-    }
-}
+const INTERVAL = 200;
+const CONSTANTS = {
+    executingFile: 'Executing file...',
+    fileDoestExist: 'File doesn\'t exist',
+};
 
 function validateAndParseParams({ filename, runner }) {
     if (!filename || !runner) {
         const currentFileName = path.basename(__filename);
-        throw new Error(`Usage: ${currentFileName} <file-path> <runner: default = node>`);
+        throw new Error(`Usage: ${currentFileName} <runner> <file>`);
     }
 
     const filePath = path.resolve(filename);
@@ -38,7 +28,7 @@ function validateAndParseParams({ filename, runner }) {
 
 function validateFile(value) {
     if (!fs.existsSync(value)) {
-        throw new Error('Error: File doesn\'t exist');
+        throw new Error(`Error: ${CONSTANTS.fileDoestExist}`);
     }
 }
 
@@ -46,8 +36,9 @@ function watchAndRun({ filename, cmd }) {
     const finalCmd = `${cmd} ${filename}`;
     execute(finalCmd);
 
-    fs.watchFile(filename, { interval: 500 }, () => {
+    fs.watchFile(filename, { interval: INTERVAL }, () => {
         console.clear();
+        console.log(CONSTANTS.executingFile);
         execute(finalCmd);
     });
 }
@@ -70,6 +61,22 @@ function execute(cmd, clear = true) {
             }
         }
     });
+}
+
+function main() {
+    try {
+        const { filename, runner } = validateAndParseParams({
+            runner: process.argv[2],
+            filename: process.argv[3],
+        });
+
+        watchAndRun({
+            filename,
+            cmd: runner,
+        });
+    } catch (err) {
+        console.log(err.message);
+    }
 }
 
 main();

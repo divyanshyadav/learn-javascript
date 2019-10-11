@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable prefer-promise-reject-errors */
-const { wait } = require('../utils');
+const { wait } = require('../../utils');
 
 const print = (res) => console.log('Result :', res);
 const printError = (error) => console.log('Error  :', error.message);
