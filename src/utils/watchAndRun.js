@@ -7,14 +7,27 @@ const { exec } = require('child_process');
 
 const INTERVAL = 200;
 const CONSTANTS = {
-    executingFile: 'Executing file...',
+    executing: 'Executing...',
     fileDoestExist: 'File doesn\'t exist',
 };
 
+function getUsageExamples(executingFileName) {
+    const examples = [
+        `eg. ${executingFileName} 'npx babel-node' ./file.js`,
+        `eg. ${executingFileName} node ./file.js`,
+    ];
+
+    return `\n\n${examples.join('\n')}\n`;
+}
+
+function getHelpSection() {
+    const executingFileName = path.basename(__filename);
+    return `Usage: ${executingFileName} <runner> <file> ${getUsageExamples(executingFileName)}`;
+}
+
 function validateAndParseParams({ filename, runner }) {
     if (!filename || !runner) {
-        const currentFileName = path.basename(__filename);
-        throw new Error(`Usage: ${currentFileName} <runner> <file>`);
+        throw new Error(getHelpSection());
     }
 
     const filePath = path.resolve(filename);
@@ -38,7 +51,7 @@ function watchAndRun({ filename, cmd }) {
 
     fs.watchFile(filename, { interval: INTERVAL }, () => {
         console.clear();
-        console.log(CONSTANTS.executingFile);
+        console.log(CONSTANTS.executing);
         execute(finalCmd);
     });
 }

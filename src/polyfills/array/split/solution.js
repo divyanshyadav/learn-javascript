@@ -44,6 +44,4 @@ const split = (string, delimiter) => {
     return result;
 };
 
-// split('a...', '...');
-
 export default split;
