@@ -7,15 +7,16 @@
 (function () {
     let x = 1;
 
+    function incrementX() {
+        x += 1;
+    }
+
     function* sample() {
         incrementX();
         yield;
         console.log(x);
     }
 
-    function incrementX() {
-        x += 1;
-    }
 
     const gen = sample();
     console.log(x);
@@ -37,6 +38,7 @@
     const sum = evaluate(5);
     const message = sum.next(5).value;
     console.log(message);
+
     const ans = sum.next(5).value;
     console.log(ans);
 });
