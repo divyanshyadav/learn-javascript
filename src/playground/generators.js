@@ -78,7 +78,7 @@
         if (value === 3) {
             // break; // Sends signal to counter iterator to terminate
             // or
-            counter.return('hello');
+            counter.return('hello.');
         }
     }
 
