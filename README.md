@@ -1,7 +1,8 @@
 ## Concepts
 
-### Arrow vs normal functions
-### HOC
-### Currying
-### Generator
-### Promise methods implementation
+- [x] Arrow vs normal functions
+- [x] HOC
+- [x] Currying
+- [x] Generator
+- [x] Promise methods implementation
+- [x] Regex
