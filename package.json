@@ -28,7 +28,16 @@
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-immutable": "^1.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "jest": "^26.0.1",
     "watch-to-run": "^1.0.0"
+  },
+  "jest": {
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "jest-watch-typeahead": "^0.6.4"
   }
 }

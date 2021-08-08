@@ -1,7 +1,7 @@
 {
     "env": {
         "browser": true,
-        "es6": true,
+        "es6": false,
         "node": true,
         "jest": true
     },
@@ -22,8 +22,9 @@
         "babel"
     ],
     "rules": {
-        "immutable/no-mutation": 2,
+        "immutable/no-mutation": 0,
         "immutable/no-let": 2,
-        "indent": ["error", 4]
+        "indent": ["error", 4],
+        "linebreak-style": 0
     }
 }
