@@ -1,3 +1,5 @@
+# Learn Javascript
+
 ## Concepts
 
 - [x] Arrow vs normal functions
@@ -6,3 +8,7 @@
 - [x] Generator
 - [x] Promise methods implementation
 - [x] Regex
+
+## References
+
+- https://262.ecma-international.org/
