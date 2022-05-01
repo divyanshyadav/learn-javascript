@@ -1,6 +1,11 @@
-const compose =
+// left to right
+export const pipe =
 	(...fns) =>
 	(value) =>
 		fns.reduce((result, fn) => fn(result), value);
 
-export default compose;
+// Right to left
+export const compose =
+	(...fns) =>
+	(value) =>
+		fns.reduceRight((res, fn) => fn(res), value);
